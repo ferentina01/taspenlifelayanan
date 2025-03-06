@@ -22,6 +22,7 @@
         <tbody>
             @foreach($daftarTamu as $tamu)
                 <tr>
+                    <td>{{ $tamu->id }}</td>
                     <td>{{ $tamu->tanggal }}</td>
                     <td>{{ $tamu->nama_tamu }}</td>
                     <td>{{ $tamu->instansi }}</td>

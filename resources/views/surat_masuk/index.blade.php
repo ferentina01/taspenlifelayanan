@@ -14,17 +14,19 @@
                     <th>Perihal</th>
                     <th>Kurir</th>
                     <th>UP</th>
-                    <th>Diterima</th>
+                    <th>Keterangan</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($suratMasuk as $surat)
                     <tr>
+                        <td>{{ $surat->id }}</td>
                         <td>{{ $surat->perihal }}</td>
-                        <td>{{ $surat->kurir }}</td>
+                        {{-- <td>{{ $surat->kurir }}</td> --}}
+                        <td>{{ $surat->tanggal_masuk }}</td>
                         <td>{{ $surat->up }}</td>
-                        <td>{{ $surat->diterima ? 'Diterima' : 'Belum Diterima' }}</td>
+                        <td>{{ $surat->Keterangan ? 'Diterima' : 'Belum Diterima' }}</td>
                         <td>
                             <a href="{{ route('surat_masuk.edit', $surat->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('surat_masuk.destroy', $surat->id) }}" method="POST"

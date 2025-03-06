@@ -19,6 +19,7 @@
     <table>
         <thead>
             <tr>
+                <th>No</th>
                 <th>Nama Penerima</th>
                 <th>Instansi</th>
                 <th>Alamat</th>
@@ -32,9 +33,10 @@
         <tbody>
             @foreach($pengiriman as $item)
                 <tr>
+                     <td>{{ $item->id }}
                     <td>{{ $item->nama_penerima }}</td>
-                    <td>{{ $item->instansi }}</td>
-                    <td>{{ $item->alamat }}</td>
+                    <td>{{ $item->nama_instansi }}</td>
+                    <td>{{ $item->alamat_penerima }}</td>
                     <td>{{ $item->no_tlp }}</td>
                     <td>{{ $item->jenis_barang }}</td>
                     <td>{{ $item->keterangan }}</td>

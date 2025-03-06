@@ -16,7 +16,7 @@ class DaftarTamuController extends Controller
     {
         //Menampilkan semua data daftar tamu
         $daftarTamu = DaftarTamu::all(); //mengambil semua data dari tabel daftar_tamu
-        return view('daftar-tamu.index', compact('daftarTamu')); //mengembalikan view data daftar tamu 
+        return view('daftar_tamu.index', compact('daftarTamu')); //mengembalikan view data daftar tamu 
     }
 
     /**
