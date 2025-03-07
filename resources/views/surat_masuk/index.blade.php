@@ -1,9 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    {{-- <div class="container">
         <h1>Surat Masuk</h1>
-        <a href="{{ route('surat_masuk.create') }}" class="btn btn-primary mb-3">Tambah Surat Masuk</a>
+          <div class="d-flex justify-content-between mb-3">
+        <div>
+            <form action="{{ route('surat_masuk.index') }}" method="GET" class="d-inline">
+                <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan nama penerima..." style="width: 300px; display: inline;">
+            </form>
+        </div>
+        <div>
+            <a href="{{ route('surat_masuk.create') }}" class="btn btn-primary">Tambah Surat</a>
+            <a href="{{ route('surat_masuk.pdf') }}" class="btn btn-success">Ekspor PDF</a>
+        </div>
+    </div> --}}
+
+    <div class="container">
+    <h1>Surat Masuk</h1>
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <form action="{{ route('surat_masuk.index') }}" method="GET" class="d-inline">
+                <input type="text" name="search" class="form-control" placeholder="Search" style="width: 300px; display: inline;">
+                <button type="submit" class="btn btn-primary">Cari</button>
+            </form>
+        </div>
+        <div>
+            <a href="{{ route('surat_masuk.create') }}" class="btn btn-primary">Tambah Surat</a>
+            <a href="{{ route('surat_masuk.pdf') }}" class="btn btn-success">Ekspor PDF</a>
+        </div>
+    </div>
+
+        
+        {{-- <a href="{{ route('surat_masuk.create') }}" class="btn btn-primary mb-3">Tambah Surat Masuk</a> --}}
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif

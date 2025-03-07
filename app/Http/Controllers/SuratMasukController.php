@@ -16,10 +16,29 @@ class SuratMasukController extends Controller
     //menampilkan surat masuk
 
     // Menampilkan semua data surat masuk
-    public function index()
+    // public function index()
+    // {
+    //     $suratMasuk = SuratMasuk::all(); // Mengambil semua data surat masuk dari database
+    //     return view('surat_masuk.index', compact('suratMasuk')); // Mengembalikan view dengan data surat masuk
+    // }
+
+    public function index(Request $request)
     {
-        $suratMasuk = SuratMasuk::all(); // Mengambil semua data surat masuk dari database
-        return view('surat_masuk.index', compact('suratMasuk')); // Mengembalikan view dengan data surat masuk
+        $search = $request->input('search');
+
+        // Mengambil data berdasarkan pencarian
+        if ($search) {
+            $suratMasuk = SuratMasuk::where('perihal', 'LIKE', "%{$search}%")
+                ->orWhere('kurir', 'LIKE', "%{$search}%")
+                ->orWhere('up', 'LIKE', "%{$search}%")
+                ->orderBy('created_at', 'asc')
+                ->get();
+        } else {
+            // Jika tidak ada pencarian, ambil semua data
+            $suratMasuk = SuratMasuk::orderBy('created_at', 'asc')->get();
+        }
+
+        return view('surat_masuk.index', compact('suratMasuk'));
     }
 
     /**

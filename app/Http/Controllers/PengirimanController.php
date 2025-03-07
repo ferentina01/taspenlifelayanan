@@ -12,21 +12,49 @@ class PengirimanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //// Mengambil semua data pengiriman dan mengurutkannya
-        $pengiriman = Pengiriman::orderBy('created_at', 'desc')->get();
-        // Mengembalikan view dengan data pengiriman
-        return view('pengiriman.index', compact('pengiriman'));
+    // public function index(Request $request)
+    // {
+    //     // //// Mengambil semua data pengiriman dan mengurutkannya
+    //     $pengiriman = Pengiriman::orderBy('created_at', 'asc')->get();
+    //     // // Mengembalikan view dengan data pengiriman
+    //     return view('pengiriman.index', compact('pengiriman'));
 
-        // Mengambil data pengiriman dengan pencarian
+    //     $search = $request->input('search');
+
+    //     // Mengambil data berdasarkan pencarian
+    //     if ($search) {
+    //         $pengiriman = Pengiriman::where('nama_penerima', 'LIKE', "%{$search}%")
+    //             ->orWhere('nama_instansi', 'LIKE', "%{$search}%")
+    //             ->orWhere('alamat_penerima', 'LIKE', "%{$search}%")
+    //             ->orWhere('jenis_barang', 'LIKE', "%{$search}%")
+    //             ->orderBy('created_at', 'desc')
+    //             ->get();
+    //     } else {
+    //         // Jika tidak ada pencarian, kembalikan data kosong
+    //         $pengiriman = collect();
+    //     }
+
+    //     return view('pengiriman.index', compact('pengiriman'));// Mengembalikan view dengan data pengiriman
+    // }
+
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+
+        // Mengambil data berdasarkan pencarian
         if ($search) {
             $pengiriman = Pengiriman::where('nama_penerima', 'LIKE', "%{$search}%")
+                ->orWhere('nama_instansi', 'LIKE', "%{$search}%")
+                ->orWhere('alamat_penerima', 'LIKE', "%{$search}%")
+                ->orWhere('jenis_barang', 'LIKE', "%{$search}%")
                 ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-            $pengiriman = Pengiriman::orderBy('created_at', 'desc')->get();
+            // Jika tidak ada pencarian, ambil semua data
+            $pengiriman = Pengiriman::orderBy('created_at', 'asc')->get();
         }
+
+        return view('pengiriman.index', compact('pengiriman'));
     }
 
     /**
