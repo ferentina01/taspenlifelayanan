@@ -12,13 +12,23 @@ class DaftarTamuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //Menampilkan semua data daftar tamu
-        $daftarTamu = DaftarTamu::all(); //mengambil semua data dari tabel daftar_tamu
-        return view('daftar-tamu.index', compact('daftarTamu')); //mengembalikan view data daftar tamu 
-    }
+        $search = $request->input('search');
 
+        // Mengambil data berdasarkan pencarian
+        if ($search) {
+            $daftarTamu = DaftarTamu::where('nama_tamu', 'LIKE', "%{$search}%")
+                ->orWhere('instansi', 'LIKE', "%{$search}%")
+                ->orderBy('tanggal', 'desc') // Atur urutan sesuai kebutuhan
+                ->get();
+        } else {
+            // Jika tidak ada pencarian, ambil semua data
+            $daftarTamu = DaftarTamu::orderBy('tanggal', 'desc')->get();
+        }
+
+        return view('daftar_tamu.index', compact('daftarTamu'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -35,6 +45,7 @@ class DaftarTamuController extends Controller
     {
         /// Validasi input
         $validator = Validator::make($request->all(), [
+            'barcode' => 'required|string|max:255',
             'tanggal' => 'required|date',
             'nama_tamu' => 'required|string|max:255',
             'instansi' => 'required|string|max:255',
@@ -82,6 +93,7 @@ class DaftarTamuController extends Controller
             'pic' => 'required|string|max:255',
             'keterangan' => 'nullable|string',
             'jam_kedatangan' => 'required|date_format:H:i',
+            
         ]);
 
         // Jika validasi gagal, kembali ke form dengan error

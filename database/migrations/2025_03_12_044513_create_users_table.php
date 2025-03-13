@@ -9,23 +9,24 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+   
     public function up()
     {
-        Schema::create('surat_masuks', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('perihal');
-            $table->string('kurir');
-            $table->string('up');
-            $table->date('tanggal_masuk');
-            $table->enum('Keterangan',['Diterima', 'Belum Diterima']);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('user_type')->default('user'); // Kolom untuk menentukan jenis pengguna
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('surat_masuks');
+        Schema::dropIfExists('users');
     }
 };

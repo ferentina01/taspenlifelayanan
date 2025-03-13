@@ -18,14 +18,23 @@
             <label for="up" class="form-label">UP</label>
             <input type="text" class="form-control" id="up" name="up" value="{{ $suratMasuk->up }}" required>
         </div>
-        <div class="mb-3">
-            <label for="diterima" class="form-label">Diterima</label>
-            <select class="form-select" id="diterima" name="diterima">
-                <option value="0" {{ $suratMasuk->diterima ? '' : '
-                                <option value="0" {{ $suratMasuk->diterima ? '' : 'selected' }}>Belum Diterima</option>
-                <option value="1" {{ $suratMasuk->diterima ? 'selected' : '' }}>Diterima</option>
+        {{-- <div class="mb-3">
+            <label for="Diterima" class="form-label">Diterima</label>
+            <select class="form-select" id="Diterima" name="Diterima">
+                <option value="0" {{ $suratMasuk->Diterima ? '' : '
+                                <option value="0" {{ $suratMasuk->Diterima ? '' : 'selected' }}>Belum Diterima</option>
+                <option value="1" {{ $suratMasuk->Diterima ? 'selected' : '' }}>Diterima</option>
+            </select>
+        </div> --}}
+
+         <div class="mb-3">
+            <label for="Keterangan" class="form-label">Keterangan</label>
+            <select class="form-select" id="Keterangan" name="Keterangan" required>
+                                <option value="Diterima" {{ $pengiriman->Keterangan == 'Diterima' ? 'selected' : '' }}>Diterima</option>
+                <option value="Belum Diterima" {{ $pengiriman->Keterangan == 'Belum Diterima' ? 'selected' : '' }}>Belum Diterima</option>
             </select>
         </div>
+
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>

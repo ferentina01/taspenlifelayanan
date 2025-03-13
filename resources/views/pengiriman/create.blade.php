@@ -10,12 +10,12 @@
             <input type="text" class="form-control" id="nama_penerima" name="nama_penerima" required>
         </div>
         <div class="mb-3">
-            <label for="instansi" class="form-label">Instansi</label>
-            <input type="text" class="form-control" id="instansi" name="instansi" required>
+            <label for="nama_instansi" class="form-label">Instansi</label>
+            <input type="text" class="form-control" id="nama_instansi" name="nama_instansi" required>
         </div>
         <div class="mb-3">
-            <label for="alamat" class="form-label">Alamat</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" required>
+            <label for="alamat_penerima" class="form-label">Alamat</label>
+            <input type="text" class="form-control" id="alamat_penerima" name="alamat_penerima" required>
         </div>
         <div class="mb-3">
             <label for="no_tlp" class="form-label">No. TLP</label>
