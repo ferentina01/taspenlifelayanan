@@ -15,11 +15,11 @@
         </div>
     </div> --}}
 
-    <h1>Daftar Tamu</h1>
+    <h3>Daftar Tamu</h3>
     <div class="d-flex justify-content-between mb-3">
         <div>
             <form action="{{ route('daftar_tamu.index') }}" method="GET" class="d-inline">
-                <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan nama tamu atau instansi..." style="width: 300px; display: inline;">
+                <input type="text" name="search" class="form-control" placeholder="Cari tamu..." style="width: 300px; display: inline;">
                 <button type="submit" class="btn btn-primary">Cari</button>
             </form>
         </div>
@@ -31,6 +31,7 @@
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+    <div class="table-responsive">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -67,4 +68,5 @@
         </tbody>
     </table>
 </div>
+<div>
 @endsection
